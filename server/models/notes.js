@@ -12,7 +12,6 @@ const noteSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      required: true,
       enum: ['COMPLETED', 'NOT COMPLETED'],
       default: 'NOT COMPLETED',
     },

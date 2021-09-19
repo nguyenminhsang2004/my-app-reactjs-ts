@@ -27,7 +27,7 @@ export default function AddEditPostPage() {
   const history = useHistory();
   const { postId } = useParams<{ postId: string }>();
   const [post, setPost] = useState<Post>();
-  console.log(post);
+
   const isEdit = Boolean(postId);
 
   useEffect(() => {
