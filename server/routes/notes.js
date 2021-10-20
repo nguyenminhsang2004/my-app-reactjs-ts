@@ -9,6 +9,7 @@ router.get('/get-all', async (req, res, next) => {
     const notes = await note_md
       .find({ author: '6134e6b506b287330ea1f2c0' })
       .populate('author', ['fullName', 'imageUrl'])
+      .sort({ completedAt: 'asc' })
       .exec()
     res.json({ success: true, content: { message: 'Success', data: notes } })
   } catch (error) {
@@ -51,7 +52,7 @@ router.post('/add', async (req, res) => {
 // get note by id
 router.get('/get-by-id/:id', async (req, res) => {
   try {
-    const note = await post_md.findOne({ _id: req.params.id })
+    const note = await note_md.findOne({ _id: req.params.id })
     res.json({
       success: true,
       content: { message: 'Create successfully', data: note },

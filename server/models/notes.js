@@ -15,9 +15,10 @@ const noteSchema = new mongoose.Schema(
       enum: ['COMPLETED', 'NOT COMPLETED'],
       default: 'NOT COMPLETED',
     },
-    completedDate: {
+    completedAt: {
       type: Date,
       required: true,
+      default: new Date(),
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,

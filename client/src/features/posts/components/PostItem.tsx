@@ -14,7 +14,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Typography,
+  Typography
 } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
@@ -24,7 +24,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import postApi from 'api/postApi'
 import { DataResponse, Post } from 'models'
 import moment from 'moment'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 export interface PostItemProps {

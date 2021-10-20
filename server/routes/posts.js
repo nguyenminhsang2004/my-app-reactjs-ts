@@ -9,6 +9,7 @@ router.get('/get-all', async (req, res, next) => {
     const posts = await post_md
       .find({ author: '6134e6b506b287330ea1f2c0' })
       .populate('author', ['fullName', 'imageUrl'])
+      .sort({ createdAt: 'desc' })
       .exec()
     res.json({ success: true, content: { message: 'Success', data: posts } })
   } catch (error) {

@@ -36,13 +36,12 @@ const dashboardSlice = createSlice({
         fetchData(state){
             state.loading = true;
         },
-        fetchDataSuccess(state){
+        fetchDataSuccess(state, action: PayloadAction<String>){
             state.loading = false;
 
         },
-        fetchDataFailed(state){
+        fetchDataFailed(state, action: PayloadAction<String>){
             state.loading = false;
-
         },
 
         setStatistics(state, action: PayloadAction<DashboardStatistics>){
@@ -62,6 +61,7 @@ const dashboardSlice = createSlice({
 export const dashboardAction = dashboardSlice.actions;
 
 // Selector
+export const selectDashboardLoading = (state: RootState) => state.dashboard.loading
 export const selectDashboardStatistics = (state: RootState) => state.dashboard.statistics;
 export const selectDashboardHighestPostList = (state: RootState) => state.dashboard.highestPostList;
 export const selectDashboardNoteList = (state: RootState) => state.dashboard.noteList;

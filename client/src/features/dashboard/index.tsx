@@ -1,8 +1,9 @@
 import { Box, Grid, LinearProgress, makeStyles } from '@material-ui/core';
 import { Favorite, NoteOutlined, Person, PostAddOutlined } from '@material-ui/icons';
-import React, { useEffect, useState } from 'react';
-import { setInterval } from 'timers';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import React, { useEffect } from 'react';
 import StatisticItem from './components/StatisticItem';
+import { dashboardAction, selectDashboardLoading, selectDashboardStatistics } from './dashboardSlice';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,17 +22,12 @@ const useStyles = makeStyles(theme => ({
 export default function Dashboard() {
   const classes = useStyles();
 
-  const [loading, setLoading] = useState(true);
-
+  const dispatch = useAppDispatch()
+  const loading = useAppSelector(selectDashboardLoading)
+  const statistics = useAppSelector(selectDashboardStatistics)
   useEffect(() => {
-
-    const loadingInterval = setInterval(() => {
-      setLoading(false);
-    },3000);
-
-    return clearInterval(loadingInterval);
-    
-  }, []);
+    dispatch(dashboardAction.fetchData())    
+  }, [dispatch]);
 
   return (
     <Box className={classes.root}>
@@ -42,7 +38,7 @@ export default function Dashboard() {
           <StatisticItem
             icon={<PostAddOutlined fontSize="large" color="secondary"/>}
             label='Post Count'
-            value={150}
+            value={statistics.postCount}
           />
         </Grid>
 
@@ -50,7 +46,7 @@ export default function Dashboard() {
           <StatisticItem
             icon={<NoteOutlined fontSize="large" color="secondary"/>}
             label='Note Count'
-            value={5}
+            value={statistics.noteCount}
           />
         </Grid>
 
@@ -58,7 +54,7 @@ export default function Dashboard() {
           <StatisticItem
             icon={<Favorite fontSize="large" color="secondary"/>}
             label='Like Count'
-            value={2000}
+            value={statistics.likeCount}
           />
         </Grid>
 
@@ -66,7 +62,7 @@ export default function Dashboard() {
           <StatisticItem
             icon={<Person fontSize="large" color="secondary"/>}
             label='Order'
-            value={20}
+            value={statistics.other}
           />
         </Grid>
       </Grid>

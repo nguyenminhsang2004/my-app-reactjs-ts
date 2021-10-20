@@ -14,6 +14,20 @@ export interface ListResponse<T> {
   }
 }
 
+export interface ListResponseStatistics {
+  success: boolean
+  content: {
+    message: string
+    data: {
+      postCount: number,
+      likeCount: number,
+      noteCount: number,
+      other:number,
+    }
+  }
+}
+
+
 export interface Auth {
   success: boolean
   content: {

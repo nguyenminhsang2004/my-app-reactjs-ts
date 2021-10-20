@@ -17,7 +17,7 @@ router.get('/statistics', async (req, res) => {
       success: true,
       content: {
         message: 'Success',
-        data: { postCount: postList.length, likeCount, noteCount: noteList.length },
+        data: { postCount: postList.length, likeCount, noteCount: noteList.length, other: 0 },
       },
     })
   } catch (error) {
