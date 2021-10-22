@@ -1,10 +1,8 @@
 import { User } from './user'
-
 export interface PaginationParams {
   _limit: number
   _totalRows: number
 }
-
 export interface ListResponse<T> {
   success: boolean
   content: {
@@ -13,7 +11,6 @@ export interface ListResponse<T> {
     //pagination: PaginationParams;
   }
 }
-
 export interface ListResponseStatistics {
   success: boolean
   content: {
@@ -26,8 +23,6 @@ export interface ListResponseStatistics {
     }
   }
 }
-
-
 export interface Auth {
   success: boolean
   content: {
@@ -36,7 +31,6 @@ export interface Auth {
     user: User
   }
 }
-
 export interface DataResponse<T> {
   success: boolean
   content: {
@@ -44,7 +38,6 @@ export interface DataResponse<T> {
     data: T
   }
 }
-
 export interface LoginPayLoad {
   email: string
   passWord: string
